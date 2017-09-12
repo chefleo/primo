@@ -12,4 +12,4 @@ function Fattoriale(numero){
 
 Fattoriale(numero);
 
-console.log(totale);
+console.log("Il fattoriale di 5 : " + totale);
