@@ -1,7 +1,7 @@
 var numero = 5;
 var totale = 1;
 
-function Fattoriale(numero){
+function Fattoriale(numero) {
 	if(numero === 1)
 		return totale;
 	else{
