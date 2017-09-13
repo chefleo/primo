@@ -1,5 +1,5 @@
-var numero = 5;
-var totale = 1;
+let numero = 5;
+let totale = 1;
 
 function Fattoriale(numero) {
 	if(numero === 1)
