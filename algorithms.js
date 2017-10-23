@@ -48,12 +48,22 @@ function InsertSort(Array) {
 	}
 }
 
-console.log("Array prima dell'algoritmo " + AlgArray1);
+console.log("Array prima dell'algoritmo InsertSort " + AlgArray1);
 
 InsertSort(AlgArray1);
 
-console.log("Array dopo l'algoritmo " + AlgArray1);
+console.log("Array dopo l'algoritmo InsertSort " + AlgArray1);
 
+Fibonacci(number,number_2);
+
+console.log("Utilizzo di Fibonacci " + final);
+
+Fattoriale(fatt);
+
+console.log("Il fattoriale di 5 : " + tot);
+
+
+/*
 let Merge = function (Array, first, meta, last) {
 	n1 = meta - last + 1;
 	n2 = last - meta;
@@ -77,7 +87,7 @@ let Merge = function (Array, first, meta, last) {
 		}
 	}
 }
-
+FIXME : Problem with the algorithm
 let MergeSort = function (Array, first, last) {
 	if(first < last){
 		meta = (first + last) / 2;
@@ -87,9 +97,10 @@ let MergeSort = function (Array, first, last) {
 	}
 }
 
+
 console.log("Array prima dell'algoritmo " + AlgArray2);
 
 MergeSort(AlgArray2, AlgArray2[0], AlgArray2[AlgArray2.length]);
 
 console.log("Array dopo l'algoritmo " + AlgArray2);
-
+*/
