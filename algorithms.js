@@ -2,12 +2,10 @@ let number = 1;
 let number_2 = 2;
 let fatt = 5;
 let tot = 1;
-let final, n, n1, n2, x, i, j, first, meta, last;
+let final, x, i, j;
 let steps = 5;
-let AlgArray1 = [1, 5, 3, 7, 2, 9, 4, 6];
-let AlgArray2 = [...AlgArray1];
-let ArrayL = [];
-let ArrayR = [];
+let AlgArray1 = [10, 35, 28, 10, 23, 59, 36];
+const AlgArray2 = [...AlgArray1];
 
 function Fibonacci (number,number_2) {
 	  for(var i = 1;i <= steps;i++) {
@@ -27,17 +25,8 @@ function Fattoriale(fatt) {
 		  
 }
 
-Fibonacci(number,number_2);
-
-console.log("Utilizzo di Fibonacci " + final);
-
-Fattoriale(fatt);
-
-console.log("Il fattoriale di 5 : " + tot);
-
 function InsertSort(Array) {
-	n = Array.length;
-	for(let j = 2; j < n; j += 1){
+	for(j = 2; j < Array.length; j += 1){
 		x = Array[j];
 		i = j-1;
 		while(i >= 1 && x < Array[i]){
@@ -46,61 +35,50 @@ function InsertSort(Array) {
 		}
 		AlgArray1[i + 1] = x;
 	}
+
+	return Array;
 }
 
-console.log("Array prima dell'algoritmo InsertSort " + AlgArray1);
+function Merge(first, last) {
+	let result = [];
+	let indexFirst = 0;
+	let indexLast = 0;
 
-InsertSort(AlgArray1);
-
-console.log("Array dopo l'algoritmo InsertSort " + AlgArray1);
-
-Fibonacci(number,number_2);
-
-console.log("Utilizzo di Fibonacci " + final);
-
-Fattoriale(fatt);
-
-console.log("Il fattoriale di 5 : " + tot);
-
-
-/*
-let Merge = function (Array, first, meta, last) {
-	n1 = meta - last + 1;
-	n2 = last - meta;
-	for(i = 1; i < n1; i += 1) {
-		ArrayL[i] = Array[first + i - 1];
-	}
-	for(j = 1; j < n2; j += 1) {
-		ArrayR[j] = Array[meta + j];
-	}
-	ArrayL[n1 + 1] = Infinity;
-	ArrayR[n2 + 1] = Infinity;
-	i = 1;
-	j = 1;
-	for(let k = first; k < last; k += 1) {
-		if(ArrayL[i] <= ArrayR[j]) {
-			Array[k] = ArrayL[i];
-			i = i + 1;
+	while (indexFirst < first.length && indexLast < last.length) {
+		if(first[indexFirst] < last[indexLast]) {
+			result.push(first[indexFirst]);
+			indexFirst++;
 		} else {
-			Array[k] = ArrayR[j];
-			j = j + 1;
+			result.push(last[indexLast]);
+			indexLast++;
 		}
 	}
+
+	return (
+		result.concat(first.slice(indexFirst))
+		.concat(last.slice(indexLast))
+		);
+	
 }
-FIXME : Problem with the algorithm
-let MergeSort = function (Array, first, last) {
-	if(first < last){
-		meta = (first + last) / 2;
-		MergeSort(Array, first, meta);
-		MergeSort(Array, meta + 1, last);
-		Merge(Array, first, meta, last);
+
+function MergeSort (Array) {
+	if(Array.length === 1) {
+		return Array;
 	}
+	const meta = parseInt(Array.length / 2);
+	const first = Array.slice(0, meta);
+	const last = Array.slice(meta, Array.length);
+
+	return Merge(
+		MergeSort(first),
+		MergeSort(last)
+		);
 }
 
-
-console.log("Array prima dell'algoritmo " + AlgArray2);
-
-MergeSort(AlgArray2, AlgArray2[0], AlgArray2[AlgArray2.length]);
-
-console.log("Array dopo l'algoritmo " + AlgArray2);
-*/
+Fibonacci(number,number_2);
+console.log("Array prima dell'algoritmo InsertSort " + AlgArray1);
+console.log("Array dopo l'algoritmo InsertSort " + InsertSort(AlgArray1));
+console.log("Utilizzo di Fibonacci " + final);
+console.log("Il fattoriale di 5 : " + Fattoriale(fatt));
+console.log("Array prima dell'algoritmo MergeSort " + AlgArray2);
+console.log("Array dopo l'algoritmo MergeSort " + MergeSort(AlgArray2));
