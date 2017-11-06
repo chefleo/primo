@@ -2,10 +2,11 @@ let number = 1;
 let number_2 = 2;
 let fatt = 5;
 let tot = 1;
-let final, x, i, j;
+let final, x, i, j, index, pivot;
 let steps = 5;
 let AlgArray1 = [10, 35, 28, 10, 23, 59, 36];
 const AlgArray2 = [...AlgArray1];
+const AlgArray3 = [...AlgArray1];
 
 function Fibonacci (number,number_2) {
 	  for(var i = 1;i <= steps;i++) {
@@ -75,6 +76,46 @@ function MergeSort (Array) {
 		);
 }
 
+function swap(Array, first, last) {
+	let temp = Array[first];
+	Array[first] = Array[last];
+	Array[last] = temp;
+}
+
+function Partition(Array, first, last) {
+	pivot = Array[Math.floor((first + last) / 2)];
+	
+	while (first <= last) {
+		while(Array[first] < pivot) {
+			first += 1;
+		}
+		while(Array[last] > pivot){
+			last -= 1;
+		}
+		if(first <= last) {
+			swap(Array, first, last);
+			first += 1;
+			last -= 1;
+		}
+	}
+
+	return first;
+}
+
+function QuickSort(Array, first, last) {
+	if (Array.length > 1) {
+		index = Partition(Array, first, last);
+		if (first < index - 1) {
+			QuickSort(Array, first, index - 1);
+		}
+		if (index < last) {
+			QuickSort(Array, index, last);
+		}
+	}
+
+	return Array;
+}
+
 Fibonacci(number,number_2);
 console.log("Array prima dell'algoritmo InsertSort " + AlgArray1);
 console.log("Array dopo l'algoritmo InsertSort " + InsertSort(AlgArray1));
@@ -82,3 +123,5 @@ console.log("Utilizzo di Fibonacci " + final);
 console.log("Il fattoriale di 5 : " + Fattoriale(fatt));
 console.log("Array prima dell'algoritmo MergeSort " + AlgArray2);
 console.log("Array dopo l'algoritmo MergeSort " + MergeSort(AlgArray2));
+console.log("Array prima dell'algoritmo QuickSort " + AlgArray3);
+console.log("Array dopo l'algoritmo QuickSort " + QuickSort(AlgArray3, 0, AlgArray3.length - 1));
